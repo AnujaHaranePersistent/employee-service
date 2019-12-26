@@ -43,6 +43,7 @@ public class Manager {
 	private String lastName;
 	
 	@OneToMany(mappedBy="manager")
+	@ApiModelProperty(hidden=true)
 	private Set<Employee> employees;
 	
 	 
@@ -80,6 +81,12 @@ public class Manager {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employees = employees;
+	}
+	public Manager(int id, @Null String firstName, @Null String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 	
 	

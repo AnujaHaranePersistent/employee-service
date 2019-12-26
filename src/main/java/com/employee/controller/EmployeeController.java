@@ -46,7 +46,7 @@ public class EmployeeController {
 			@ApiResponse(code = 401, message = "not authorized!"), @ApiResponse(code = 403, message = "forbidden!!!"),
 			@ApiResponse(code = 404, message = "not found!!!") })
 	public List<Employee> getAllEmployees() {
-		logger.debug("getting all employees");
+		logger.debug("Executed EmployeeController.getAllEmployees() to retrive all employees data");
 		return service.getAllEmployees();
 	}
 
@@ -62,6 +62,7 @@ public class EmployeeController {
 	@PostMapping
 	@ApiOperation(value = "Save Employee object into the database", response = Employee.class)
 	public Employee saveEmployee(@ApiParam(value = "Employee object", required = true) @RequestBody Employee emp) {
+		logger.debug("Executed EmployeeController.saveEmployees(emp) to save employee object");
 		return service.saveEmployee(emp);
 	}
 
@@ -74,11 +75,12 @@ public class EmployeeController {
 	 */
 	@ApiOperation(value = "Get specific Employee by id", response = Employee.class)
 	@GetMapping("/employee/{id}")
-	public ResponseEntity<Object> getEmployee(
+	public ResponseEntity<Object> getEmployeeById(
 			@ApiParam(value = "Employee id", required = true) @PathVariable("id") int id) throws ResourceNotFound {
+		
 		Employee emp = service.getEmployeeById(id);
 		System.out.println(emp);
-		logger.info("into get emploee");
+		logger.debug("Executed EmployeeController.getEmployeeById(id) to get employee object with id "+ id);
 		if (emp == null)
 			throw new ResourceNotFound("Resource Not Found");
 		return new ResponseEntity<>(emp, HttpStatus.OK);
@@ -100,6 +102,7 @@ public class EmployeeController {
 	public ResponseEntity<Object> deleteEmployee(
 			@ApiParam(value = "Employee id", required = true) @PathVariable("id") int id) throws ResourceNotFound {
 		Employee emp = service.getEmployeeById(id);
+		logger.debug("Executed EmployeeController.deleteEmployee(id) to delete employee object with id " + id);
 		if (emp == null)
 			throw new ResourceNotFound("Resource Not Found");
 		else {
@@ -129,7 +132,7 @@ public class EmployeeController {
 			@ApiParam(value = "Employee object", required = true) @RequestBody Employee employee)
 					throws ResourceNotFound {
 		Employee emp = service.getEmployeeById(id);
-		System.out.println(emp);
+		logger.debug("Executed EmployeeController.updateEmployee(id,emp) to update employee object with id" + id);
 		if (emp == null)
 			throw new ResourceNotFound("Resource Not Found");
 		else {
@@ -152,7 +155,7 @@ public class EmployeeController {
 	public ResponseEntity<Object> getEmployeeByManager(
 			@ApiParam(value = "Manager id", required = true) @PathVariable("id") int id) throws ResourceNotFound {
 		List<Employee> emp = service.findByManager(id);
-		System.out.println(emp);
+		logger.debug("Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id" + id);
 		if (emp == null)
 			throw new ResourceNotFound("Resource Not Found");
 		return new ResponseEntity<>(emp, HttpStatus.OK);
