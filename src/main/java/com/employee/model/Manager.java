@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -33,10 +34,12 @@ public class Manager {
 	
 	@Column(name="first_name")
 	@ApiModelProperty(value = "First name of Manager",required=false)
+	@Null
 	private String firstName;
 	
 	@Column(name="last_name")
 	@ApiModelProperty(value = "Last name of manager",required=false)
+	@Null
 	private String lastName;
 	
 	@OneToMany(mappedBy="manager")
@@ -79,11 +82,7 @@ public class Manager {
 		this.employees = employees;
 	}
 	
-	@Override
-	public String toString() {
-		return "Manager [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employees="
-				+ employees + "]";
-	}
+	
 	
 	
 	

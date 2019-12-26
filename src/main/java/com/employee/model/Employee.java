@@ -96,11 +96,7 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emp_no=" + emp_no
-				+ ", manager=" + manager + "]";
-	}
+	
 	
 	
 	
