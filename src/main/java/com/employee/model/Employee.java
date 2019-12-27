@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -40,6 +41,7 @@ public class Employee {
 	
 	
 	@Column(name="emp_no")
+	@NotNull
 	@ApiModelProperty(value = "Employee Number",required=true)
 	private int emp_no;
 	

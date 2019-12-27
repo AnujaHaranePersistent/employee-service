@@ -153,11 +153,10 @@ public class EmployeeController {
 	@ApiOperation(value = "Get All Employees who reports to same manager", response = List.class)
 	@GetMapping("/manager/{id}")
 	public ResponseEntity<Object> getEmployeeByManager(
-			@ApiParam(value = "Manager id", required = true) @PathVariable("id") int id) throws ResourceNotFound {
+			@ApiParam(value = "Manager id", required = true) @PathVariable("id") int id) {
 		List<Employee> emp = service.findByManager(id);
 		logger.debug("Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id" + id);
-		if (emp == null)
-			throw new ResourceNotFound("Resource Not Found");
+		
 		return new ResponseEntity<>(emp, HttpStatus.OK);
 	}
 

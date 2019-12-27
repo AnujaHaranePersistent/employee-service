@@ -1,41 +1,29 @@
-logging:
-  level:
-    org.springframework: ERROR
-    com.employee: TRACE
-  pattern:
-    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
-    file: "%d %p %c{1.} [%t] %m%n"
-  file: app.logConfiguration:
-  status: debug
-
-  appenders:
+Configutation:
+  name: Default
+  Properties:
+    Property:
+      name: log-path
+      value: "logs"
+  Appenders:
     Console:
-      name: LogToConsole
+      name: Console_Appender
+      target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
-
-    RollingFile:
-      - name: LogToRollingFile
-        fileName: D:\SpringRefrence\EmployeeDataService\app.log
-        filePattern: "logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
-        PatternLayout:
-          pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
-        Policies:
-          SizeBasedTriggeringPolicy:
-            size: 10MB
-        DefaultRollOverStrategy:
-          max: 10
-
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+    File:
+      name: File_Appender
+      fileName: logs\logfile.log
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
   Loggers:
-    logger:
-      - name: com.employee
+      Root:
         level: debug
-        additivity: false
         AppenderRef:
-          - ref: LogToConsole
-          - ref: LogToRollingFile
-
-    Root:
-      level: error
-      AppenderRef:
-        ref: LogToConsole
+          - ref: Console_Appender
+ 
+      Logger:
+        - name: com.employee
+          level: debug
+          AppenderRef:
+            - ref: File_Appender
+              level: debug
