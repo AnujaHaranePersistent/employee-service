@@ -1,0 +1,52 @@
+
+To Create Manager Table:
+
+CREATE TABLE manager(
+   mgr_id serial PRIMARY KEY,
+   first_name VARCHAR (50) NOT NULL,
+   last_name VARCHAR (50) NOT NULL
+);
+
+
+ Column   |         Type          | Collation | Nullable |                 Default
+------------+-----------------------+-----------+----------+-----------------------------------------
+ mgr_id     | integer               |           | not null | nextval('manager_mgr_id_seq'::regclass)
+ first_name | character varying(50) |           | not null |
+ last_name  | character varying(50) |           | not null |
+Indexes:
+    "manager_pkey" PRIMARY KEY, btree (mgr_id)
+Referenced by:
+    TABLE "employee" CONSTRAINT "employee_mgr_id_fkey" FOREIGN KEY (mgr_id) REFERENCES manager(mgr_id)
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+To Create Employee Table:
+
+CREATE TABLE employee(
+   emp_id serial PRIMARY KEY,
+   first_name VARCHAR (50) NOT NULL,
+   last_name VARCHAR (50) NOT NULL,
+   emp_no INTEGER NOT NULL,
+   mgr_id INTEGER REFERENCES manager(mgr_id)
+
+);
+
+
+   Column   |         Type          | Collation | Nullable |                 Default
+------------+-----------------------+-----------+----------+------------------------------------------
+ emp_id     | integer               |           | not null | nextval('employee_emp_id_seq'::regclass)
+ first_name | character varying(50) |           | not null |
+ last_name  | character varying(50) |           | not null |
+ emp_no     | integer               |           | not null |
+ mgr_id     | integer               |           |          |
+Indexes:
+    "employee_pkey" PRIMARY KEY, btree (emp_id)
+Foreign-key constraints:
+    "employee_mgr_id_fkey" FOREIGN KEY (mgr_id) REFERENCES manager(mgr_id)
+

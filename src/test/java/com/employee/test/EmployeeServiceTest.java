@@ -1,39 +1,38 @@
 package com.employee.test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import com.employee.exception.ResourceNotFound;
 import com.employee.model.Employee;
 import com.employee.model.Manager;
 import com.employee.repositary.EmployeeRepositary;
 import com.employee.service.EmployeeService;
-import static org.mockito.Mockito.*;
+import com.employee.service.EmployeeServiceImpl;
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class EmployeeServiceTest {
 	
-	@MockBean
+	@Mock
 	private EmployeeRepositary repositary;
 	
-	@Autowired
-	private EmployeeService service;
+	@InjectMocks
+	private EmployeeService service =new EmployeeServiceImpl(); 
 	
-	
+	 @Before
+	    public void init() {
+	        MockitoAnnotations.initMocks(this);
+	    }
 	
 	@Test
 	public void testGetAllEmployees(){
@@ -86,7 +85,7 @@ public class EmployeeServiceTest {
 	public void testDeleteEmployee(){
 		Manager manager=new Manager(101, "abc", "abc");
 		Employee emp=new Employee(1,"xyz","xyz",1001, manager);
-		when(repositary.findById(1)).thenReturn(emp);
+	//	when(repositary.findById(1)).thenReturn(emp);
 		service.deleteEmployee(emp);
         verify(repositary, times(1)).delete(emp);
 	}

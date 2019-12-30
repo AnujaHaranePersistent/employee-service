@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.internal.stubbing.answers.DoesNothing;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,13 +102,11 @@ public class EmployeeControllerTest {
 	public void testUpdateEmployeeById() {
 		Manager manager=new Manager(101, "abc", "abc");
 		Employee emp=new Employee(1,"xyz","xyz",1001, manager);
-		when(repositary.findById(1)).thenReturn(emp);
+		when(repositary.save(emp)).thenReturn(emp);
 		ResponseEntity<Object> result;
 		try {
-			result = controller.getEmployeeById(1);
-			assertEquals(emp, result.getBody());
 			result = controller.updateEmployee(1, emp);
-			//assertThat(result.getStatusCodeValue()).isEqualTo(200);
+			assertThat(result.getStatusCodeValue()).isEqualTo(200);
 		} catch (ResourceNotFound e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,41 +115,23 @@ public class EmployeeControllerTest {
 		
 	}
 	
+	
 	@Test
-	public void testDeleteEmployeeById() {
-		Manager manager=new Manager(101, "abc", "abc");
-		Employee emp=new Employee(1,"xyz","xyz",1001, manager);
-		when(repositary.findById(1)).thenReturn(emp);
-		ResponseEntity<Object> result;
-		try {
-			result = controller.getEmployeeById(1);
-			assertEquals(emp, result.getBody());
-			result = controller.deleteEmployee(1);
-			
-		} catch (ResourceNotFound e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-	@Test
-	public void testDeleteEmployeeById_IfNotFound() {
-		Manager manager=new Manager(101, "abc", "abc");
-		Employee emp=new Employee(1,"xyz","xyz",1001, manager);
-		when(repositary.findById(1)).thenReturn(emp);
-		ResponseEntity<Object> result;
-		try {
-			result = controller.getEmployeeById(2);
-			assertNotEquals(emp, result.getBody());
-			fail( "Should have thrown an exception" );			
-		} catch (ResourceNotFound e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
+    public void testDeleteEmployeeById() {
+        Manager manager=new Manager(101, "abc", "abc");
+        Employee emp=new Employee(1,"xyz","xyz",1001, manager);
+        doNothing().when(repositary).delete(emp);
+        ResponseEntity<Object> result;
+        try {
+            result = controller.deleteEmployee(1);
+            assertThat(result.getStatusCodeValue()).isEqualTo(200);
+        } catch (ResourceNotFound e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        
+    }
 	
 	
 	@Test
