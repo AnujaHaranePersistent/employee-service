@@ -3,8 +3,9 @@
 ## Steps to Setup
 
 ### 1. Clone the application
-
+```bash
 https://github.com/givanthak/spring-boot-rest-api-tutorial.git
+```
 
 ### 2. Create Postgres database
 ```bash
