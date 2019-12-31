@@ -2,21 +2,21 @@
 
 ## Steps to Setup
 
-1. Clone the application
+### 1. Clone the application
 
 https://github.com/givanthak/spring-boot-rest-api-tutorial.git
 
-2. Create Postgres database
+### 2. Create Postgres database
 
 create database employee-data
 
-3. Change postgres username and password as per your installation
+### 3. Change postgres username and password as per your installation
 
 open src/main/resources/application.yml
 
 change datasource.username and datasource.password as per your postgres installation
 
-4. Build and run the app using maven
+### 4. Build and run the app using maven
 
 mvn package
 java -jar target/EmployeeDataService-0.0.1-SNAPSHOT.jar
