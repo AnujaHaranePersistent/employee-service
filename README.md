@@ -55,4 +55,4 @@ GET /manager/{id}          -   to get list of employees who reports to same mana
 ```
 
 ## To run Tests
-Type ```bash mvn test ``` from the root directory of the project to run the tests.
+Type ```bash  mvn test ``` from the root directory of the project to run the tests.
