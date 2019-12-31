@@ -1,5 +1,6 @@
 package com.employee.controller;
 
+import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,11 @@ import com.employee.jwt.JwtRequest;
 import com.employee.jwt.JwtResponse;
 import com.employee.jwt.JwtTokenUtil;
 import com.employee.jwt.JwtUserDetailsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * @author anuja_harane
@@ -26,6 +32,8 @@ import com.employee.jwt.JwtUserDetailsService;
  */
 @RestController
 @CrossOrigin
+@Api(value = "Authentication Service",
+description = "Generation and validation of token")
 public class AuthenticationController {
   @Autowired
   private AuthenticationManager authenticationManager;
@@ -39,8 +47,12 @@ public class AuthenticationController {
    * @return return jwtResponse with token
    * @throws Exception if username and password is not valid
    */
+  @ApiOperation(value = "Create authentication token", response = JwtResponse.class)
+  @ApiResponses(value = {@ApiResponse(code = 200, message = "Suceess|OK"),
+      @ApiResponse(code = 401, message = "not authorized!"),
+      @ApiResponse(code = 403, message = "forbidden!!!")})
   @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-  public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
+  public ResponseEntity<?> createAuthenticationToken( @ApiParam(value = "Jwt Request Object", required = true)@RequestBody JwtRequest authenticationRequest)
       throws Exception {
     authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
     final UserDetails userDetails =

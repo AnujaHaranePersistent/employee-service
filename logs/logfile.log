@@ -520,3 +520,56 @@
 [DEBUG] 2019-12-30 17:06:46.292 [http-nio-8080-exec-3] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id4
 [DEBUG] 2019-12-30 17:06:46.688 [http-nio-8080-exec-3] EmployeeController - Executed EmployeeController.getEmployeeById(id) to get employee object with id 4
 [ERROR] 2019-12-30 17:06:50.442 [http-nio-8080-exec-4] EmployeeExceptionHandler - getEmployeeById.id Id is not valid
+[INFO ] 2019-12-31 11:50:35.875 [main] EmployeeControllerTest - Starting EmployeeControllerTest on PTD22589 with PID 21880 (started by anuja_harane in D:\SpringRefrence\EmployeeDataService)
+[DEBUG] 2019-12-31 11:50:35.900 [main] EmployeeControllerTest - Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+[INFO ] 2019-12-31 11:50:35.902 [main] EmployeeControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2019-12-31 11:51:10.564 [main] EmployeeControllerTest - Started EmployeeControllerTest in 42.052 seconds (JVM running for 78.245)
+[DEBUG] 2019-12-31 11:51:10.853 [main] EmployeeController - Executed EmployeeController.saveEmployees(emp) to save employee object
+[DEBUG] 2019-12-31 11:51:10.854 [main] EmployeeServiceImpl - EmplyeeService.saveEmployee(Employee emp)  save Employee object
+[DEBUG] 2019-12-31 11:51:10.946 [main] EmployeeServiceImpl - EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is101
+[DEBUG] 2019-12-31 11:51:10.946 [main] EmployeeController - Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id101
+[DEBUG] 2019-12-31 11:51:11.222 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:51:11.222 [main] EmployeeController - Executed EmployeeController.deleteEmployee(id) to delete employee object with id 1
+[DEBUG] 2019-12-31 11:51:11.232 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:51:11.232 [main] EmployeeController - Executed EmployeeController.getEmployeeById(id) to get employee object with id 1
+[DEBUG] 2019-12-31 11:51:11.245 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:51:11.246 [main] EmployeeController - Executed EmployeeController.updateEmployee(id,emp) to update employee object with id1
+[DEBUG] 2019-12-31 11:51:11.258 [main] EmployeeController - Executed EmployeeController.getAllEmployees() to retrive all employees data
+[DEBUG] 2019-12-31 11:51:11.258 [main] EmployeeServiceImpl - EmplyeeService.getAllEmployee()  return list of employees
+[DEBUG] 2019-12-31 11:51:11.265 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id2
+[DEBUG] 2019-12-31 11:51:11.266 [main] EmployeeController - Executed EmployeeController.getEmployeeById(id) to get employee object with id 2
+[DEBUG] 2019-12-31 11:51:11.288 [main] EmployeeServiceImpl - EmplyeeService.saveEmployee(Employee emp)  save Employee object
+[DEBUG] 2019-12-31 11:51:11.290 [main] EmployeeServiceImpl - EmplyeeService.deleteEmployee(Employee emp)  delete Employee object whos id is1
+[DEBUG] 2019-12-31 11:51:11.313 [main] EmployeeServiceImpl - EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is101
+[DEBUG] 2019-12-31 11:51:11.314 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:51:11.315 [main] EmployeeServiceImpl - EmplyeeService.getAllEmployee()  return list of employees
+[DEBUG] 2019-12-31 11:51:11.316 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id2
+[INFO ] 2019-12-31 11:53:32.134 [main] EmployeeControllerTest - Starting EmployeeControllerTest on PTD22589 with PID 24552 (started by anuja_harane in D:\SpringRefrence\EmployeeDataService)
+[DEBUG] 2019-12-31 11:53:32.159 [main] EmployeeControllerTest - Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+[INFO ] 2019-12-31 11:53:32.160 [main] EmployeeControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2019-12-31 11:53:48.969 [main] EmployeeControllerTest - Started EmployeeControllerTest in 17.681 seconds (JVM running for 23.529)
+[DEBUG] 2019-12-31 11:53:49.532 [main] EmployeeController - Executed EmployeeController.saveEmployees(emp) to save employee object
+[DEBUG] 2019-12-31 11:53:49.533 [main] EmployeeServiceImpl - EmplyeeService.saveEmployee(Employee emp)  save Employee object
+[DEBUG] 2019-12-31 11:53:50.050 [main] EmployeeServiceImpl - EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is101
+[DEBUG] 2019-12-31 11:53:50.051 [main] EmployeeController - Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id101
+[DEBUG] 2019-12-31 11:53:50.839 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:53:50.839 [main] EmployeeController - Executed EmployeeController.deleteEmployee(id) to delete employee object with id 1
+[DEBUG] 2019-12-31 11:53:50.851 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:53:50.851 [main] EmployeeController - Executed EmployeeController.getEmployeeById(id) to get employee object with id 1
+[DEBUG] 2019-12-31 11:53:50.860 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:53:50.860 [main] EmployeeController - Executed EmployeeController.updateEmployee(id,emp) to update employee object with id1
+[DEBUG] 2019-12-31 11:53:50.878 [main] EmployeeController - Executed EmployeeController.getAllEmployees() to retrive all employees data
+[DEBUG] 2019-12-31 11:53:50.878 [main] EmployeeServiceImpl - EmplyeeService.getAllEmployee()  return list of employees
+[DEBUG] 2019-12-31 11:53:50.887 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id2
+[DEBUG] 2019-12-31 11:53:50.887 [main] EmployeeController - Executed EmployeeController.getEmployeeById(id) to get employee object with id 2
+[DEBUG] 2019-12-31 11:53:50.905 [main] EmployeeServiceImpl - EmplyeeService.saveEmployee(Employee emp)  save Employee object
+[DEBUG] 2019-12-31 11:53:50.906 [main] EmployeeServiceImpl - EmplyeeService.deleteEmployee(Employee emp)  delete Employee object whos id is1
+[DEBUG] 2019-12-31 11:53:50.983 [main] EmployeeServiceImpl - EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is101
+[DEBUG] 2019-12-31 11:53:50.989 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id1
+[DEBUG] 2019-12-31 11:53:50.992 [main] EmployeeServiceImpl - EmplyeeService.getAllEmployee()  return list of employees
+[DEBUG] 2019-12-31 11:53:50.996 [main] EmployeeServiceImpl - EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id2
+[INFO ] 2019-12-31 14:46:54.120 [main] EmployeeDataServiceApplication - Starting EmployeeDataServiceApplication v0.0.1-SNAPSHOT on PTD22589 with PID 18140 (D:\SpringRefrence\EmployeeDataService\target\EmployeeDataService-0.0.1-SNAPSHOT.jar started by anuja_harane in D:\SpringRefrence\EmployeeDataService)
+[DEBUG] 2019-12-31 14:46:54.170 [main] EmployeeDataServiceApplication - Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+[INFO ] 2019-12-31 14:46:54.171 [main] EmployeeDataServiceApplication - No active profile set, falling back to default profiles: default
+[DEBUG] 2019-12-31 14:46:58.740 [main] JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+[INFO ] 2019-12-31 14:47:05.905 [main] EmployeeDataServiceApplication - Started EmployeeDataServiceApplication in 13.454 seconds (JVM running for 17.306)

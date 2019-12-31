@@ -37,11 +37,11 @@ public class EmployeeController {
   EmployeeService service;
 
   /**
-   *  get the list of all available employees from database
+   * get the list of all available employees from database
    * 
    * @return List of Employees
    */
-  @GetMapping
+  @GetMapping("/employee")
   @ApiOperation(value = "Get list of Employees", response = List.class)
   @ApiResponses(value = {@ApiResponse(code = 200, message = "Suceess|OK"),
       @ApiResponse(code = 401, message = "not authorized!"),
@@ -60,7 +60,7 @@ public class EmployeeController {
    * 
    * 
    */
-  @PostMapping
+  @PostMapping("/employee")
   @ApiOperation(value = "Save Employee object into the database", response = Employee.class)
   @ApiResponses(value = {@ApiResponse(code = 200, message = "Suceess|OK"),
       @ApiResponse(code = 401, message = "not authorized!"),
@@ -72,7 +72,7 @@ public class EmployeeController {
     return service.saveEmployee(emp);
   }
 
-  
+
   /**
    * @param id identifier of the employee
    * @return emp return employee object with given identifier
@@ -99,7 +99,7 @@ public class EmployeeController {
   }
 
   /**
-   *  Delete employee with given id, it will first check whether employee with given identifier is
+   * Delete employee with given id, it will first check whether employee with given identifier is
    * exits into database or not
    * 
    * @param id identifier of the employee you want to delete
@@ -129,8 +129,8 @@ public class EmployeeController {
   }
 
   /**
-   * update the existing employee into the database, it will first check whether employee with
-   * given identifier is exits into database or not
+   * update the existing employee into the database, it will first check whether employee with given
+   * identifier is exits into database or not
    * 
    * @param id identifier of the employee you want to update
    * @param employee employee object with the data you want to update
@@ -163,7 +163,7 @@ public class EmployeeController {
   }
 
   /**
-   * @param id identifier of the manager 
+   * @param id identifier of the manager
    * @return List of Employees who reports to manager with given identifier
    * 
    */
@@ -174,7 +174,7 @@ public class EmployeeController {
       @ApiResponse(code = 404, message = "not found!!!")})
   @GetMapping("/manager/{id}")
   public ResponseEntity<Object> getEmployeeByManager(
-      @ApiParam(value = "Manager id", required = true) @PathVariable("id") @ Identification int id) {
+      @ApiParam(value = "Manager id", required = true) @PathVariable("id") @Identification int id) {
     List<Employee> emp = service.findByManager(id);
     log.debug(
         "Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id"

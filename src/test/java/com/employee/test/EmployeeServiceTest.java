@@ -80,6 +80,23 @@ public class EmployeeServiceTest {
 		assertEquals("xyz", result.getLastName());
 		assertEquals(manager, result.getManager());
 	}
+	@Test
+    public void testUpdateEmployee(){
+        Manager manager=new Manager(101, "abc", "abc");
+        Employee emp=new Employee(1,"xyz","xyz",1001, manager);
+        Manager man=new Manager(102, "abc", "abc");
+        emp.setFirstName("abc");
+        emp.setLastName("abc");
+        emp.setEmp_no(1002);
+        emp.setManager(man);
+        when(repositary.save(emp)).thenReturn(emp);
+        Employee result = service.updateEmployee(emp);
+        assertEquals(1, result.getId());
+        assertEquals(1002, result.getEmp_no());
+        assertEquals("abc", result.getFirstName());
+        assertEquals("abc", result.getLastName());
+        assertEquals(man, result.getManager());
+    }
 	
 	@Test
 	public void testDeleteEmployee(){
