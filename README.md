@@ -4,7 +4,7 @@
 
 ### 1. Clone the application
 ```bash
-https://github.com/givanthak/spring-boot-rest-api-tutorial.git
+https://github.com/AnujaHaranePersistent/employee-service.git
 ```
 
 ### 2. Create Postgres database
@@ -39,15 +39,17 @@ The app will start running at http://localhost:8080.
 The app defines following CRUD APIs.
 
 ```bash
-GET /api/v1/users
+POST /authenticate         -   to authenticate user and generate token
 
-POST /api/v1/users
+GET /api/employee`         -   to get list of employees
 
-GET /api/v1/users/{userId}
+POST /api/employee         -   to post employee data to server
 
-PUT /api/v1/users/{userId}
+GET /api/employee/{id}     -   to get employee with given identifier
 
-DELETE /api/v1/users/{userId}
+PUT /api/employee/{id}     -   to update employee with given identifier
+
+DELETE /api/employee/{id}  -   to delete employee with given identifier
 ```
 
 ## To run Tests
