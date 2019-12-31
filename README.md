@@ -1,10 +1,11 @@
 # employee-service
 
-# Steps to Setup
+## Steps to Setup
 
 1. Clone the application
 
 https://github.com/givanthak/spring-boot-rest-api-tutorial.git
+
 2. Create Postgres database
 
 create database employee-data
