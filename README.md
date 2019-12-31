@@ -58,9 +58,11 @@ GET /manager/{id}          -   to get list of employees who reports to same mana
  Type ``` mvn test ``` 
  from the root directory of the project to run the tests.
  ``` bash
+ To view the jacaco generated report
+ 
 open D:\SpringRefrence\EmployeeDataService\target\site\jacoco\ident.html
 ```
-to view the jacaco generated report
+
  
 ![Jacaco Report](C:\Users\anuja_harane\Pictures\Screenshots\jacaco.png)
-Format: ![Alt Text](url)
+
