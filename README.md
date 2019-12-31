@@ -50,7 +50,9 @@ GET /api/employee/{id}     -   to get employee with given identifier
 PUT /api/employee/{id}     -   to update employee with given identifier
 
 DELETE /api/employee/{id}  -   to delete employee with given identifier
+
+GET /manager/{id}          -   to get list of employees who reports to same manager
 ```
 
 ## To run Tests
-Type mvn test from the root directory of the project to run the tests.
+Type ```bash mvn test ``` from the root directory of the project to run the tests.
