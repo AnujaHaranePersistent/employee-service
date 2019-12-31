@@ -9,6 +9,7 @@ https://github.com/givanthak/spring-boot-rest-api-tutorial.git
 2. Create Postgres database
 
 create database employee-data
+
 3. Change postgres username and password as per your installation
 
 open src/main/resources/application.yml
@@ -19,12 +20,15 @@ change datasource.username and datasource.password as per your postgres installa
 
 mvn package
 java -jar target/EmployeeDataService-0.0.1-SNAPSHOT.jar
+
 Alternatively, you can run the app without packaging it using -
 
 mvn spring-boot:run
+
 The app will start running at http://localhost:8080.
 
 Explore Rest APIs
+
 The app defines following CRUD APIs.
 
 GET /api/v1/users
@@ -37,5 +41,5 @@ PUT /api/v1/users/{userId}
 
 DELETE /api/v1/users/{userId}
 
-# To run Tests
+## To run Tests
 Type mvn test from the root directory of the project to run the tests.
