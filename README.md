@@ -18,7 +18,7 @@ create database employee-data
 open src/main/resources/application.yml
 ```
 
-change datasource.username and datasource.password as per your postgres installation
+change datasource.username and datasource.password as per your postgres installation and databse name to employee-data
 
 ### 4. Build and run the app using maven
 
