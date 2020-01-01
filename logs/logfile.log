@@ -573,3 +573,5 @@
 [INFO ] 2019-12-31 14:46:54.171 [main] EmployeeDataServiceApplication - No active profile set, falling back to default profiles: default
 [DEBUG] 2019-12-31 14:46:58.740 [main] JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
 [INFO ] 2019-12-31 14:47:05.905 [main] EmployeeDataServiceApplication - Started EmployeeDataServiceApplication in 13.454 seconds (JVM running for 17.306)
+[ERROR] 2020-01-01 15:16:13.058 [http-nio-8080-exec-3] EmployeeExceptionHandler - org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.employee.model.Employee.manager -> com.employee.model.Manager; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.employee.model.Employee.manager -> com.employee.model.Manager
+[ERROR] 2020-01-01 15:17:31.965 [http-nio-8080-exec-4] EmployeeExceptionHandler - firstName must not be null
