@@ -1,7 +1,7 @@
 spring:
-   application:
-     name: employee data service
    datasource:
-     url: jdbc:postgresql://localhost:5432/postgres
-     username: postgres
-     password: root
+     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:postgres}
+     username: ${POSTGRES_USERNAME:postgres}
+     password: ${POSTGRES_PASSWORD:root}
+server:
+  port : 5000

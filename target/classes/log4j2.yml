@@ -9,7 +9,7 @@ Configutation:
       name: Console_Appender
       target: SYSTEM_OUT
       PatternLayout:
-        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} %X{userId} %X{sessionId} %X{requestId} - %m%n"
     File:
       name: File_Appender
       fileName: logs\logfile.log

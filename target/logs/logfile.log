@@ -1,0 +1,3 @@
+[ERROR] 2020-01-10 19:10:44.943 [http-nio-5000-exec-3] EmployeeExceptionHandler - could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[ERROR] 2020-01-10 19:10:49.844 [http-nio-5000-exec-4] EmployeeExceptionHandler - could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[ERROR] 2020-01-10 19:10:53.856 [http-nio-5000-exec-5] EmployeeExceptionHandler - could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet

@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.employee.controller.EmployeeController;
 import com.employee.model.Employee;
-import com.employee.repositary.EmployeeRepositary;
-
+import com.employee.repository.EmployeeRepositary;
 import lombok.extern.log4j.Log4j2;
 
 /**

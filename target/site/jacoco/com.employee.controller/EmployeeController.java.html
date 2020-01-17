@@ -92,7 +92,7 @@ import lombok.extern.log4j.Log4j2;
 <span class="fc" id="L92">    Employee emp = service.getEmployeeById(id);</span>
 <span class="fc" id="L93">    System.out.println(emp);</span>
 <span class="fc" id="L94">    log.debug(</span>
-<span class="fc" id="L95">        &quot;Executed EmployeeController.getEmployeeById(id) to get employee object with id &quot; + id);</span>
+        &quot;Executed EmployeeController.getEmployeeById(id) to get employee object with id &quot; + id);
 <span class="fc bfc" id="L96" title="All 2 branches covered.">    if (emp == null)</span>
 <span class="fc" id="L97">      throw new ResourceNotFound(&quot;Resource Not Found&quot;);</span>
 <span class="fc" id="L98">    return new ResponseEntity&lt;&gt;(emp, HttpStatus.OK);</span>
@@ -118,7 +118,7 @@ import lombok.extern.log4j.Log4j2;
           throws ResourceNotFound {
 <span class="fc" id="L119">    Employee emp = service.getEmployeeById(id);</span>
 <span class="fc" id="L120">    log.debug(</span>
-<span class="fc" id="L121">        &quot;Executed EmployeeController.deleteEmployee(id) to delete employee object with id &quot; + id);</span>
+        &quot;Executed EmployeeController.deleteEmployee(id) to delete employee object with id &quot; + id);
 <span class="pc bpc" id="L122" title="1 of 2 branches missed.">    if (emp == null)</span>
 <span class="fc" id="L123">      throw new ResourceNotFound(&quot;Resource Not Found&quot;);</span>
     else {
@@ -150,14 +150,14 @@ import lombok.extern.log4j.Log4j2;
           throws ResourceNotFound {
 <span class="fc" id="L151">    Employee emp = service.getEmployeeById(id);</span>
 <span class="fc" id="L152">    log.debug(&quot;Executed EmployeeController.updateEmployee(id,emp) to update employee object with id&quot;</span>
-<span class="fc" id="L153">        + id);</span>
+        + id);
 <span class="pc bpc" id="L154" title="1 of 2 branches missed.">    if (emp == null)</span>
 <span class="fc" id="L155">      throw new ResourceNotFound(&quot;Resource Not Found&quot;);</span>
     else {
 <span class="nc" id="L157">      emp.setFirstName(employee.getFirstName());</span>
 <span class="nc" id="L158">      emp.setLastName(employee.getLastName());</span>
 <span class="nc" id="L159">      service.updateEmployee(emp);</span>
-<span class="nc" id="L160">      return new ResponseEntity&lt;Object&gt;(HttpStatus.OK);</span>
+<span class="nc" id="L160">      return new ResponseEntity&lt;&gt;(emp, HttpStatus.OK);</span>
     }
 
   }
@@ -177,8 +177,8 @@ import lombok.extern.log4j.Log4j2;
       @ApiParam(value = &quot;Manager id&quot;, required = true) @PathVariable(&quot;id&quot;) @Identification int id) {
 <span class="fc" id="L178">    List&lt;Employee&gt; emp = service.findByManager(id);</span>
 <span class="fc" id="L179">    log.debug(</span>
-<span class="fc" id="L180">        &quot;Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id&quot;</span>
-<span class="fc" id="L181">            + id);</span>
+        &quot;Executed EmployeeController.getEmployeeByManager(id) to get list of employees who's manager with id&quot;
+            + id);
 
 <span class="fc" id="L183">    return new ResponseEntity&lt;&gt;(emp, HttpStatus.OK);</span>
   }

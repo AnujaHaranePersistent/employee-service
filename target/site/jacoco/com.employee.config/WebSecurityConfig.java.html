@@ -14,56 +14,53 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.employee.jwt.JwtAuthenticationEntryPoint;
 import com.employee.jwt.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-<span class="fc" id="L24">public class WebSecurityConfig extends WebSecurityConfigurerAdapter {</span>
-	
-	@Autowired
-	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-	@Autowired
-	private UserDetailsService jwtUserDetailsService;
-	@Autowired
-	private JwtRequestFilter jwtRequestFilter;
+<span class="fc" id="L23">public class WebSecurityConfig extends WebSecurityConfigurerAdapter {</span>
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-<span class="fc" id="L35">		auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());</span>
-<span class="fc" id="L36">	}</span>
+  @Autowired
+  private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+  @Autowired
+  private UserDetailsService jwtUserDetailsService;
+  @Autowired
+  private JwtRequestFilter jwtRequestFilter;
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-<span class="fc" id="L40">		return new BCryptPasswordEncoder();</span>
-	}
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+<span class="fc" id="L34">    auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());</span>
+<span class="fc" id="L35">  }</span>
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-<span class="fc" id="L46">		return super.authenticationManagerBean();</span>
-	}
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+<span class="fc" id="L39">    return new BCryptPasswordEncoder();</span>
+  }
 
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		
-		
-<span class="fc" id="L53">		httpSecurity.csrf().disable()</span>
-				// dont authenticate this particular request
-<span class="fc" id="L55">				.authorizeRequests().antMatchers(&quot;/v2/api-docs&quot;,</span>
-                        &quot;/configuration/ui&quot;,
-                        &quot;/swagger-resources/**&quot;,
-                        &quot;/configuration/security&quot;,
-                        &quot;/swagger-ui.html&quot;,
-<span class="fc" id="L60">                        &quot;/webjars/**&quot;,&quot;/authenticate&quot;).permitAll().</span>
-				// all other requests need to be authenticateds
-<span class="fc" id="L62">				anyRequest().authenticated().and().</span>
-				
-<span class="fc" id="L64">		exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()</span>
-<span class="fc" id="L65">				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);</span>
-<span class="fc" id="L66">		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);</span>
-<span class="fc" id="L67">	}</span>
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+<span class="fc" id="L45">    return super.authenticationManagerBean();</span>
+  }
+
+  @Override
+  protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+
+<span class="fc" id="L52">    httpSecurity.csrf().disable()</span>
+        // dont authenticate this particular request
+<span class="fc" id="L54">        .authorizeRequests()</span>
+<span class="fc" id="L55">        .antMatchers(&quot;/v2/api-docs&quot;, &quot;/configuration/ui&quot;, &quot;/swagger-resources/**&quot;,</span>
+            &quot;/configuration/security&quot;, &quot;/swagger-ui.html&quot;, &quot;/webjars/**&quot;, &quot;/authenticate&quot;)
+<span class="fc" id="L57">        .permitAll().</span>
+        // all other requests need to be authenticateds
+<span class="fc" id="L59">        anyRequest().authenticated().and().</span>
+
+<span class="fc" id="L61">    exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()</span>
+<span class="fc" id="L62">        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);</span>
+<span class="fc" id="L63">    httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);</span>
+<span class="fc" id="L64">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

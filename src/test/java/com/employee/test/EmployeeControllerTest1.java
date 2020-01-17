@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.employee.controller.EmployeeController;
 import com.employee.model.Employee;
-import com.employee.model.Manager;
 import com.employee.service.EmployeeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,8 +40,8 @@ public class EmployeeControllerTest1 {
   @Test
   public void testCreateEmployee() throws Exception {
 
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+
+    Employee emp = Mockito.mock(Employee.class);
     when(service.saveEmployee(emp)).thenReturn(emp);
 
 
@@ -67,8 +66,7 @@ public class EmployeeControllerTest1 {
 
   @Test
   public void testGetEmployeeById() throws Exception {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    Employee emp = Mockito.mock(Employee.class);
 
     Mockito.when(service.getEmployeeById(Mockito.anyInt())).thenReturn(emp);
 
@@ -85,11 +83,11 @@ public class EmployeeControllerTest1 {
   @Test
   public void testGetAllEmployees() throws Exception {
 
-    Manager manager = new Manager(101, "abc", "abc");
+
     List<Employee> employees = new ArrayList<Employee>();
-    employees.add(new Employee(1, "xyz", "xyz", 1001, manager));
-    employees.add(new Employee(2, "xyz", "xyz", 1003, manager));
-    employees.add(new Employee(3, "xyz", "xyz", 1002, manager));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
 
     Mockito.when(service.getAllEmployees()).thenReturn(employees);
 
@@ -106,8 +104,7 @@ public class EmployeeControllerTest1 {
 
   @Test
   public void testUpdateEmployee() throws Exception {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    Employee emp = Mockito.mock(Employee.class);
 
     String expectedJson = this.mapToJson(emp);
 
@@ -128,9 +125,7 @@ public class EmployeeControllerTest1 {
 
   @Test
   public void testDeleteEmployeeById() throws Exception {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
-
+    Employee emp = Mockito.mock(Employee.class);
     doNothing().when(service).deleteEmployee(emp);
 
 

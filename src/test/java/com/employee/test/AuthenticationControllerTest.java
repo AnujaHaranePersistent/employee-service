@@ -47,7 +47,9 @@ public class AuthenticationControllerTest {
   private JwtUserDetailsService userDetailsService;
 
 
-
+  /*
+   * trying to create token with valid credentials and proper request body.
+   */
   @Test
   public void testCreateAuthenticationToken() throws Exception {
 

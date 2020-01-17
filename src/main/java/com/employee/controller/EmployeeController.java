@@ -157,7 +157,7 @@ public class EmployeeController {
       emp.setFirstName(employee.getFirstName());
       emp.setLastName(employee.getLastName());
       service.updateEmployee(emp);
-      return new ResponseEntity<Object>(HttpStatus.OK);
+      return new ResponseEntity<>(emp, HttpStatus.OK);
     }
 
   }

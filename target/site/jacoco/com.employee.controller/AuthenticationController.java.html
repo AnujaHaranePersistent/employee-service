@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthenticationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EmployeeDataService</a> &gt; <a href="index.source.html" class="el_package">com.employee.controller</a> &gt; <span class="el_source">AuthenticationController.java</span></div><h1>AuthenticationController.java</h1><pre class="source lang-java linenums">package com.employee.controller;
 
-import java.util.List;
-import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,14 +25,14 @@ import io.swagger.annotations.ApiResponses;
 /**
  * @author anuja_harane
  * 
- * AuthenticationController is responsible to generate token and verify the authntication token 
+ *         AuthenticationController is responsible to generate token and verify the authntication
+ *         token
  *
  */
 @RestController
 @CrossOrigin
-@Api(value = &quot;Authentication Service&quot;,
-description = &quot;Generation and validation of token&quot;)
-<span class="fc" id="L37">public class AuthenticationController {</span>
+@Api(value = &quot;Authentication Service&quot;, description = &quot;Generation and validation of token&quot;)
+<span class="fc" id="L35">public class AuthenticationController {</span>
   @Autowired
   private AuthenticationManager authenticationManager;
   @Autowired
@@ -52,29 +50,29 @@ description = &quot;Generation and validation of token&quot;)
       @ApiResponse(code = 401, message = &quot;not authorized!&quot;),
       @ApiResponse(code = 403, message = &quot;forbidden!!!&quot;)})
   @RequestMapping(value = &quot;/authenticate&quot;, method = RequestMethod.POST)
-  public ResponseEntity&lt;?&gt; createAuthenticationToken( @ApiParam(value = &quot;Jwt Request Object&quot;, required = true)@RequestBody JwtRequest authenticationRequest)
-      throws Exception {
-<span class="fc" id="L57">    authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());</span>
-<span class="fc" id="L58">    final UserDetails userDetails =</span>
-<span class="fc" id="L59">        userDetailsService.loadUserByUsername(authenticationRequest.getUsername());</span>
-<span class="fc" id="L60">    final String token = jwtTokenUtil.generateToken(userDetails);</span>
-<span class="fc" id="L61">    return ResponseEntity.ok(new JwtResponse(token));</span>
+  public ResponseEntity&lt;?&gt; createAuthenticationToken(@ApiParam(value = &quot;Jwt Request Object&quot;,
+      required = true) @RequestBody JwtRequest authenticationRequest) throws Exception {
+<span class="fc" id="L55">    authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());</span>
+<span class="fc" id="L56">    final UserDetails userDetails =</span>
+<span class="fc" id="L57">        userDetailsService.loadUserByUsername(authenticationRequest.getUsername());</span>
+<span class="fc" id="L58">    final String token = jwtTokenUtil.generateToken(userDetails);</span>
+<span class="fc" id="L59">    return ResponseEntity.ok(new JwtResponse(token));</span>
   }
 
   /**
-   * @param username 
+   * @param username
    * @param password
    * @throws Exception if username and password is not valid
    */
   private void authenticate(String username, String password) throws Exception {
     try {
-<span class="fc" id="L71">      authenticationManager</span>
-<span class="fc" id="L72">          .authenticate(new UsernamePasswordAuthenticationToken(username, password));</span>
-<span class="nc" id="L73">    } catch (DisabledException e) {</span>
-<span class="nc" id="L74">      throw new Exception(&quot;USER_DISABLED&quot;, e);</span>
-<span class="nc" id="L75">    } catch (BadCredentialsException e) {</span>
-<span class="nc" id="L76">      throw new Exception(&quot;INVALID_CREDENTIALS&quot;, e);</span>
-<span class="fc" id="L77">    }</span>
-<span class="fc" id="L78">  }</span>
+<span class="fc" id="L69">      authenticationManager</span>
+<span class="fc" id="L70">          .authenticate(new UsernamePasswordAuthenticationToken(username, password));</span>
+<span class="nc" id="L71">    } catch (DisabledException e) {</span>
+<span class="nc" id="L72">      throw new Exception(&quot;USER_DISABLED&quot;, e);</span>
+<span class="nc" id="L73">    } catch (BadCredentialsException e) {</span>
+<span class="nc" id="L74">      throw new Exception(&quot;INVALID_CREDENTIALS&quot;, e);</span>
+<span class="fc" id="L75">    }</span>
+<span class="fc" id="L76">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -8,17 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "employee")
-@ApiModel(value = "All details about Customer")
+@ApiModel(value = "All details about Employee")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
 
@@ -51,70 +58,6 @@ public class Employee {
   @JoinColumn(name = "mgr_id", nullable = false)
   @JsonIgnoreProperties("employees")
   private Manager manager;
-
-  // get id of employee
-  public int getId() {
-    return id;
-  }
-
-  // set id of employee
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  // get name of employee
-  public String getFirstName() {
-    return firstName;
-  }
-
-  // set name of employee
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  // get last name of employee
-  public String getLastName() {
-    return lastName;
-  }
-
-  // set last name of employee
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  // get employee number
-  public int getEmp_no() {
-    return emp_no;
-  }
-
-  // set employee number
-  public void setEmp_no(int emp_no) {
-    this.emp_no = emp_no;
-  }
-
-  // manager associated with employee
-  public Manager getManager() {
-    return manager;
-  }
-
-  public void setManager(Manager manager) {
-    this.manager = manager;
-  }
-
-
-  public Employee(int id, @Size(min = 2, max = 30) String firstName, String lastName,
-      @NotEmpty int emp_no, Manager manager) {
-    super();
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.emp_no = emp_no;
-    this.manager = manager;
-  }
-
-  public Employee() {
-    // TODO Auto-generated constructor stub
-  }
 
 
 

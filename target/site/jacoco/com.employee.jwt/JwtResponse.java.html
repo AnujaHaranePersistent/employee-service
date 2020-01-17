@@ -3,15 +3,15 @@
 import java.io.Serializable;
 
 public class JwtResponse implements Serializable {
-	private static final long serialVersionUID = -8091879091924046844L;
-	private final String jwttoken;
 
-<span class="fc" id="L9">	public JwtResponse(String jwttoken) {</span>
-<span class="fc" id="L10">		this.jwttoken = jwttoken;</span>
-<span class="fc" id="L11">	}</span>
+  private final String jwttoken;
 
-	public String getToken() {
-<span class="fc" id="L14">		return this.jwttoken;</span>
-	}
+<span class="fc" id="L9">  public JwtResponse(String jwttoken) {</span>
+<span class="fc" id="L10">    this.jwttoken = jwttoken;</span>
+<span class="fc" id="L11">  }</span>
+
+  public String getToken() {
+<span class="fc" id="L14">    return this.jwttoken;</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

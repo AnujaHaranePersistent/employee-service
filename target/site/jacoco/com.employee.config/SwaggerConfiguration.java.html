@@ -2,7 +2,6 @@
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,27 +13,22 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-<span class="fc" id="L17">public class SwaggerConfiguration {</span>
-	
-	 @Bean
-	    public Docket api() {
-<span class="fc" id="L21">	        return new Docket(DocumentationType.SWAGGER_2).select()</span>
-<span class="fc" id="L22">	            .apis(RequestHandlerSelectors</span>
-<span class="fc" id="L23">	                .basePackage(&quot;com.employee&quot;))</span>
-<span class="fc" id="L24">	            .paths(PathSelectors.regex(&quot;/.*&quot;))</span>
-<span class="fc" id="L25">	            .build().apiInfo(apiEndPointsInfo());</span>
-	    }
-	 
-	 private ApiInfo apiEndPointsInfo() {
-<span class="fc" id="L29">	        return new ApiInfoBuilder().title(&quot;Employee Data Service&quot;)</span>
-<span class="fc" id="L30">	            .description(&quot;Employee Data Service REST API&quot;)</span>
-<span class="fc" id="L31">	            .contact(new Contact(&quot;Anuja  Harane&quot;, null,null))</span>
-<span class="fc" id="L32">	            .license(&quot;Apache 2.0&quot;)</span>
-<span class="fc" id="L33">	            .licenseUrl(&quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;)</span>
-<span class="fc" id="L34">	            .version(&quot;1.0.0&quot;)</span>
-<span class="fc" id="L35">	            .build();</span>
-	    }
-	
+<span class="fc" id="L16">public class SwaggerConfiguration {</span>
+
+  @Bean
+  public Docket api() {
+<span class="fc" id="L20">    return new Docket(DocumentationType.SWAGGER_2).select()</span>
+<span class="fc" id="L21">        .apis(RequestHandlerSelectors.basePackage(&quot;com.employee&quot;)).paths(PathSelectors.regex(&quot;/.*&quot;))</span>
+<span class="fc" id="L22">        .build().apiInfo(apiEndPointsInfo());</span>
+  }
+
+  private ApiInfo apiEndPointsInfo() {
+<span class="fc" id="L26">    return new ApiInfoBuilder().title(&quot;Employee Data Service&quot;)</span>
+<span class="fc" id="L27">        .description(&quot;Employee Data Service REST API&quot;)</span>
+<span class="fc" id="L28">        .contact(new Contact(&quot;Anuja  Harane&quot;, null, null)).license(&quot;Apache 2.0&quot;)</span>
+<span class="fc" id="L29">        .licenseUrl(&quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;).version(&quot;1.0.0&quot;).build();</span>
+  }
+
 
 
 }

@@ -1,0 +1,5 @@
+com\employee\test\EmployeeControllerTest.class
+com\employee\test\EmployeeServiceTest.class
+com\employee\test\AuthenticationControllerTest.class
+com\employee\test\EmployeeControllerTest1.class
+com\employee\test\EmployeeValidationTest.class

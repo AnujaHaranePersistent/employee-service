@@ -57,7 +57,7 @@ import lombok.extern.log4j.Log4j2;
 <span class="nc" id="L57">    String msg = &quot;&quot;;</span>
 <span class="nc bnc" id="L58" title="All 2 branches missed.">    for (ConstraintViolation&lt;?&gt; cv : ex.getConstraintViolations()) {</span>
 <span class="nc" id="L59">      msg += cv.getPropertyPath() + &quot; &quot; + cv.getMessage();</span>
-    }
+<span class="nc" id="L60">    }</span>
 
 <span class="nc" id="L62">    ErrorResponse e = new ErrorResponse();</span>
 <span class="nc" id="L63">    e.setMessage(msg);</span>
@@ -76,7 +76,7 @@ import lombok.extern.log4j.Log4j2;
 <span class="nc" id="L76">    String msg = &quot;&quot;;</span>
 <span class="nc bnc" id="L77" title="All 2 branches missed.">    for (FieldError fieldError : result.getFieldErrors()) {</span>
 <span class="nc" id="L78">      msg = msg + fieldError.getField() + &quot; : &quot; + fieldError.getDefaultMessage() + &quot;%ns&quot;;</span>
-    }
+<span class="nc" id="L79">    }</span>
 <span class="nc" id="L80">    e.setMessage(msg);</span>
 <span class="nc" id="L81">    e.setStatusCode(400);</span>
 <span class="nc" id="L82">    log.error(msg);</span>

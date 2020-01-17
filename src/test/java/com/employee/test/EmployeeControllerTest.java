@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.employee.controller.EmployeeController;
 import com.employee.exception.ResourceNotFound;
 import com.employee.model.Employee;
-import com.employee.model.Manager;
 import com.employee.service.EmployeeService;
 
 @SpringBootTest
@@ -42,11 +42,11 @@ public class EmployeeControllerTest {
 
   @Test
   public void testGetAllEmployees() {
-    Manager manager = new Manager(101, "abc", "abc");
+    // Manager manager = Mockito.mock(Manager.class);
     List<Employee> employees = new ArrayList<Employee>();
-    employees.add(new Employee(1, "xyz", "xyz", 1001, manager));
-    employees.add(new Employee(2, "xyz", "xyz", 1003, manager));
-    employees.add(new Employee(3, "xyz", "xyz", 1002, manager));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
     when(service.getAllEmployees()).thenReturn(employees);
 
     List<Employee> result = controller.getAllEmployees();
@@ -55,8 +55,8 @@ public class EmployeeControllerTest {
 
   @Test
   public void testGetEmployeeById() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     when(service.getEmployeeById(1)).thenReturn(emp);
     ResponseEntity<Object> result = null;
     try {
@@ -71,11 +71,11 @@ public class EmployeeControllerTest {
     assertThat(result.getStatusCodeValue()).isEqualTo(200);
   }
 
-  @SuppressWarnings("null")
+
   @Test
   public void testGetEmployeeById_IfNotFound() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     when(service.getEmployeeById(1)).thenReturn(emp);
     ResponseEntity<Object> result = null;
     try {
@@ -92,8 +92,8 @@ public class EmployeeControllerTest {
 
   @Test
   public void testUpdateEmployeeById() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     when(service.saveEmployee(emp)).thenReturn(emp);
     ResponseEntity<Object> result;
     try {
@@ -109,8 +109,8 @@ public class EmployeeControllerTest {
 
   @Test
   public void testUpdateEmployeeById_IfNotFound() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     when(service.saveEmployee(emp)).thenReturn(emp);
     ResponseEntity<Object> result;
     try {
@@ -127,8 +127,8 @@ public class EmployeeControllerTest {
 
   @Test
   public void testDeleteEmployeeById() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     doNothing().when(service).deleteEmployee(emp);
     ResponseEntity<Object> result;
     try {
@@ -145,11 +145,11 @@ public class EmployeeControllerTest {
 
   @Test
   public void testGetEmployeesByManagerId() {
-    Manager manager = new Manager(101, "abc", "abc");
+    // Manager manager = Mockito.mock(Manager.class);
     List<Employee> employees = new ArrayList<Employee>();
-    employees.add(new Employee(1, "xyz", "xyz", 1001, manager));
-    employees.add(new Employee(2, "xyz", "xyz", 1003, manager));
-    employees.add(new Employee(3, "xyz", "xyz", 1002, manager));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
+    employees.add(Mockito.mock(Employee.class));
     when(service.findByManager(101)).thenReturn(employees);
     ResponseEntity<Object> result = controller.getEmployeeByManager(101);
     assertEquals(employees, result.getBody());
@@ -160,8 +160,8 @@ public class EmployeeControllerTest {
 
   @Test
   public void testSaveEmployee() {
-    Manager manager = new Manager(101, "abc", "abc");
-    Employee emp = new Employee(1, "xyz", "xyz", 1001, manager);
+    // Manager manager = Mockito.mock(Manager.class);
+    Employee emp = Mockito.mock(Employee.class);
     when(service.saveEmployee(emp)).thenReturn(emp);
     Employee result = controller.saveEmployee(emp);
     assertEquals(emp, result);

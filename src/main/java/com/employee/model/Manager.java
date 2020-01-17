@@ -8,15 +8,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Null;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "manager")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @ApiModel(value = "All details about Manager")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Manager {
 
 
@@ -39,58 +46,6 @@ public class Manager {
   @OneToMany(mappedBy = "manager")
   @ApiModelProperty(hidden = true)
   private Set<Employee> employees;
-
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public Set<Employee> getEmployees() {
-    return employees;
-  }
-
-  public void setEmployees(Set<Employee> employees) {
-    this.employees = employees;
-  }
-
-  public Manager() {
-    // TODO Auto-generated constructor stub
-  }
-
-  public Manager(int id, String firstName, String lastName, Set<Employee> employees) {
-    super();
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.employees = employees;
-  }
-
-  public Manager(int id, @Null String firstName, @Null String lastName) {
-    super();
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
 
 
 

@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.employee.controller.EmployeeController;
 import com.employee.model.Employee;
-import com.employee.repositary.EmployeeRepositary;
-
+import com.employee.repository.EmployeeRepositary;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -18,8 +17,8 @@ import lombok.extern.log4j.Log4j2;
  *
  */
 @Service
-<span class="fc" id="L21">@Log4j2</span>
-<span class="fc" id="L22">public class EmployeeServiceImpl implements EmployeeService {</span>
+<span class="fc" id="L20">@Log4j2</span>
+<span class="fc" id="L21">public class EmployeeServiceImpl implements EmployeeService {</span>
 
 //	private static final log log = LogManager.getlog(EmployeeController.class);
 	@Autowired
@@ -35,8 +34,8 @@ import lombok.extern.log4j.Log4j2;
 	@Override
 	public List&lt;Employee&gt; getAllEmployees() {
 		
-<span class="fc" id="L38">		log.debug(&quot;EmplyeeService.getAllEmployee()  return list of employees&quot;);</span>
-<span class="fc" id="L39">		return repositary.findAll();</span>
+<span class="fc" id="L37">		log.debug(&quot;EmplyeeService.getAllEmployee()  return list of employees&quot;);</span>
+<span class="fc" id="L38">		return repositary.findAll();</span>
 	}
 
 	/*
@@ -48,8 +47,8 @@ import lombok.extern.log4j.Log4j2;
 	 */
 	@Override
 	public Employee getEmployeeById(int emp_id) {
-<span class="fc" id="L51">		log.debug(&quot;EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id&quot; + emp_id);</span>
-<span class="fc" id="L52">		return repositary.findById(emp_id);</span>
+<span class="fc" id="L50">		log.debug(&quot;EmplyeeService.getEmployeeById(int emp_id)  return Employee object with id&quot; + emp_id);</span>
+<span class="fc" id="L51">		return repositary.findById(emp_id);</span>
 	}
 
 	/*
@@ -65,8 +64,8 @@ import lombok.extern.log4j.Log4j2;
 	 */
 	@Override
 	public Employee saveEmployee(Employee emp) {
-<span class="fc" id="L68">		log.debug(&quot;EmplyeeService.saveEmployee(Employee emp)  save Employee object&quot;);</span>
-<span class="fc" id="L69">		return repositary.save(emp);</span>
+<span class="fc" id="L67">		log.debug(&quot;EmplyeeService.saveEmployee(Employee emp)  save Employee object&quot;);</span>
+<span class="fc" id="L68">		return repositary.save(emp);</span>
 	}
 
 	/*
@@ -80,11 +79,11 @@ import lombok.extern.log4j.Log4j2;
 	 */
 	@Override
 	public void deleteEmployee(Employee emp) {
-<span class="fc" id="L83">		log.debug(&quot;EmplyeeService.deleteEmployee(Employee emp)  delete Employee object whos id is&quot; + emp.getId());</span>
+<span class="fc" id="L82">		log.debug(&quot;EmplyeeService.deleteEmployee(Employee emp)  delete Employee object whos id is&quot; + emp.getId());</span>
 
-<span class="fc" id="L85">		repositary.delete(emp);</span>
+<span class="fc" id="L84">		repositary.delete(emp);</span>
 
-<span class="fc" id="L87">	}</span>
+<span class="fc" id="L86">	}</span>
 
 	/*
 	 * update the specified employee into the database
@@ -100,15 +99,15 @@ import lombok.extern.log4j.Log4j2;
 	 */
 	@Override
 	public Employee updateEmployee(Employee emp) {
-<span class="fc" id="L103">		log.debug(&quot;EmplyeeService.updateEmployee(Employee emp)  update Employee object whos id is&quot; + emp.getId());</span>
-<span class="fc" id="L104">		return repositary.save(emp);</span>
+<span class="fc" id="L102">		log.debug(&quot;EmplyeeService.updateEmployee(Employee emp)  update Employee object whos id is&quot; + emp.getId());</span>
+<span class="fc" id="L103">		return repositary.save(emp);</span>
 	}
 
 	@Override
 	public List&lt;Employee&gt; findByManager(int mgr_id) {
-<span class="fc" id="L109">		log.debug(&quot;EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is&quot; + mgr_id);</span>
+<span class="fc" id="L108">		log.debug(&quot;EmplyeeService.findByManager(int mgr_id)  find list of Employees who report to manager whos id is&quot; + mgr_id);</span>
 		//System.out.println( repositary.findAllByManager_Id(mgr_id));
-<span class="fc" id="L111">		return repositary.findAllByManager_Id(mgr_id);</span>
+<span class="fc" id="L110">		return repositary.findAllByManager_Id(mgr_id);</span>
 	}
 
 }

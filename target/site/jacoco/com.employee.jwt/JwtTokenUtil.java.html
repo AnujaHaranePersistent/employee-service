@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
@@ -13,58 +12,59 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
-<span class="fc" id="L16">public class JwtTokenUtil implements Serializable {</span>
-	private static final long serialVersionUID = -2550185165626007488L;
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-	
-<span class="fc" id="L20">	private String secret=&quot;admin&quot;;</span>
+<span class="fc" id="L15">public class JwtTokenUtil implements Serializable {</span>
 
-	// get username from jwt token
-	public String getUsernameFromToken(String token) {
-<span class="nc" id="L24">		return getClaimFromToken(token, Claims::getSubject);</span>
-	}
+  public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
-	// get expiration date from jwt token
-	public Date getExpirationDateFromToken(String token) {
-<span class="nc" id="L29">		return getClaimFromToken(token, Claims::getExpiration);</span>
-	}
+<span class="fc" id="L19">  private String secret = &quot;admin&quot;;</span>
 
-	public &lt;T&gt; T getClaimFromToken(String token, Function&lt;Claims, T&gt; claimsResolver) {
-<span class="nc" id="L33">		final Claims claims = getAllClaimsFromToken(token);</span>
-<span class="nc" id="L34">		return claimsResolver.apply(claims);</span>
-	}
+  // get username from jwt token
+  public String getUsernameFromToken(String token) {
+<span class="nc" id="L23">    return getClaimFromToken(token, Claims::getSubject);</span>
+  }
 
-	// for retrieveing any information from token we will need the secret key
-	private Claims getAllClaimsFromToken(String token) {
-<span class="nc" id="L39">		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();</span>
-	}
+  // get expiration date from jwt token
+  public Date getExpirationDateFromToken(String token) {
+<span class="nc" id="L28">    return getClaimFromToken(token, Claims::getExpiration);</span>
+  }
 
-	// check if the token has expired
-	private Boolean isTokenExpired(String token) {
-<span class="nc" id="L44">		final Date expiration = getExpirationDateFromToken(token);</span>
-<span class="nc" id="L45">		return expiration.before(new Date());</span>
-	}
+  public &lt;T&gt; T getClaimFromToken(String token, Function&lt;Claims, T&gt; claimsResolver) {
+<span class="nc" id="L32">    final Claims claims = getAllClaimsFromToken(token);</span>
+<span class="nc" id="L33">    return claimsResolver.apply(claims);</span>
+  }
 
-	// generate token for user
-	public String generateToken(UserDetails userDetails) {
-<span class="fc" id="L50">		Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();</span>
-		//System.out.println(doGenerateToken(claims, userDetails.getUsername()));
-<span class="fc" id="L52">		return doGenerateToken(claims, userDetails.getUsername());</span>
-	}
+  // for retrieveing any information from token we will need the secret key
+  private Claims getAllClaimsFromToken(String token) {
+<span class="nc" id="L38">    return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();</span>
+  }
 
-	// to create the token -
-	// 1. Define claims of the token, like Issuer, Expiration, Subject, and the ID
-	// 2. Sign the JWT using the HS512 algorithm and secret key.
-	private String doGenerateToken(Map&lt;String, Object&gt; claims, String subject) {
-<span class="fc" id="L59">		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))</span>
-<span class="fc" id="L60">				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))</span>
-<span class="fc" id="L61">				.signWith(SignatureAlgorithm.HS512, secret).compact();</span>
-	}
+  // check if the token has expired
+  private Boolean isTokenExpired(String token) {
+<span class="nc" id="L43">    final Date expiration = getExpirationDateFromToken(token);</span>
+<span class="nc" id="L44">    return expiration.before(new Date());</span>
+  }
 
-	// validate token
-	public Boolean validateToken(String token, UserDetails userDetails) {
-<span class="nc" id="L66">		final String username = getUsernameFromToken(token);</span>
-<span class="nc bnc" id="L67" title="All 4 branches missed.">		return (username.equals(userDetails.getUsername()) &amp;&amp; !isTokenExpired(token));</span>
-	}
+  // generate token for user
+  public String generateToken(UserDetails userDetails) {
+<span class="nc" id="L49">    Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();</span>
+    // System.out.println(doGenerateToken(claims, userDetails.getUsername()));
+<span class="nc" id="L51">    return doGenerateToken(claims, userDetails.getUsername());</span>
+  }
+
+  // to create the token -
+  // 1. Define claims of the token, like Issuer, Expiration, Subject, and the ID
+  // 2. Sign the JWT using the HS512 algorithm and secret key.
+  private String doGenerateToken(Map&lt;String, Object&gt; claims, String subject) {
+<span class="nc" id="L58">    return Jwts.builder().setClaims(claims).setSubject(subject)</span>
+<span class="nc" id="L59">        .setIssuedAt(new Date(System.currentTimeMillis()))</span>
+<span class="nc" id="L60">        .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 100))</span>
+<span class="nc" id="L61">        .signWith(SignatureAlgorithm.HS512, secret).compact();</span>
+  }
+
+  // validate token
+  public Boolean validateToken(String token, UserDetails userDetails) {
+<span class="nc" id="L66">    final String username = getUsernameFromToken(token);</span>
+<span class="nc bnc" id="L67" title="All 4 branches missed.">    return (username.equals(userDetails.getUsername()) &amp;&amp; !isTokenExpired(token));</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
