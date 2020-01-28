@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: "employee data service"
+  datasource:
+    password: ${DATABASE_PASSWORD:root}
+    url: "jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:employee_data}"
+    username: ${DATABASE_USERNAME:root}
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
+server:
+  port: 7070
+
+
+

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  docker-mysql:
+    image: mysql-database-image
+  employee-data-service:
+    image: employee-service:latest
+    depends_on:
+      - docker-mysql
+    ports:
+      - 7070:7070
+    environment:
+      - DATABASE_HOST=docker-mysql
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=employee_data
+      - DATABASE_PORT=3306
