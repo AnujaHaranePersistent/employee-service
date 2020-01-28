@@ -10,20 +10,7 @@ pipeline {
             steps {
                 git branch: 'jenkins-cicd', credentialsId: 'Github', url: 'https://github.com/AnujaHaranePersistent/employee-service.git'
             }
-        }
-
-        stage("Build Project") {
-            steps {
-                sh "mvn clean install"
-            }
-        }
-        stage("Test Code Coverage") {
-
-            steps {
-                sh "mvn test"
-       
-            }
-        }
+    }
 
     }
     }
