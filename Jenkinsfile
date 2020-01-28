@@ -20,9 +20,10 @@ pipeline {
                   bat "mvn clean -DskipTests install"
              }
         }
-         stage("Run Tests") {
+         stage("Run Tests and Static Code Analysis") {
               steps {
                    bat "mvn test"
+                   bat "mvn sonar:sonar"
               }
          }
 
