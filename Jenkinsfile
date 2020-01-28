@@ -14,10 +14,16 @@ pipeline {
         }
 
         stage("Build Project") {
-                    steps {
-                        bat "mvn clean -Dmaven.test.failure.ignore=true install"
-                    }
-                }
+             steps {
+                  bat "mvn clean -DskipTests install"
+             }
+        }
+         stage("Run Tests") {
+              steps {
+                   bat "mvn test"
+              }
+         }
+
    
     }
     }
