@@ -1,11 +1,9 @@
 pipeline {
 
     agent any
-
     tools {
         maven "Maven"
     }
-
     stages {
 
         stage("Build Project") {
@@ -13,7 +11,6 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-
         stage("Test Code Coverage") {
 
             steps {
