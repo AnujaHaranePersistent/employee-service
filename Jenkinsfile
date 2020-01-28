@@ -2,9 +2,15 @@ pipeline {
 
     agent any
     tools {
-        maven "Maven"
+        maven 'maven'
     }
     stages {
+
+        stage ('Git checkout branch') {
+            steps {
+                git branch: 'branch', credentialsId: '****', url: 'https://projectRepo'
+            }
+        }
 
         stage("Build Project") {
             steps {
@@ -19,4 +25,5 @@ pipeline {
             }
         }
 
+    }
     }
