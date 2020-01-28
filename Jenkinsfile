@@ -8,7 +8,7 @@ pipeline {
 
         stage ('Git checkout branch') {
             steps {
-                git branch: 'branch', credentialsId: '****', url: 'https://projectRepo'
+                git branch: 'jenkins-cicd', credentialsId: 'Github', url: 'https://github.com/AnujaHaranePersistent/employee-service.git'
             }
         }
 
