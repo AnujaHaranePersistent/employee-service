@@ -17,15 +17,16 @@ pipeline {
 
         stage("Build Project") {
              steps {
-                  bat "mvn clean -DskipTests install"
+                  bat "mvn clean -Dmaven.test.failure.ignore=true install"
+                  jacoco(
+                        execPattern: 'target/*.exec',
+                        classPattern: 'target/classes',
+                        sourcePattern: 'src/main/java',
+                        exclusionPattern: 'src/test*'
+                  )
              }
         }
-         stage("Run Tests and Static Code Analysis") {
-              steps {
-                   bat "mvn test"
-                   bat "mvn sonar:sonar"
-              }
-         }
+
 
    
     }
