@@ -37,6 +37,7 @@ pipeline {
              script {
             withSonarQubeEnv('sonarqube') {
                 bat 'mvn sonar:sonar'
+                }
                   timeout(time: 1, unit: 'HOURS') {
                    // Just in case something goes wrong, pipeline will be killed after a timeout
                             qualityGate = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
@@ -46,7 +47,7 @@ pipeline {
                             }
             } // SonarQube taskId is automatically attached to the pipeline context
              }
-          }
+          
         }
        stage('Building image') {
              steps{
