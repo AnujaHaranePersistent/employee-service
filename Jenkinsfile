@@ -5,6 +5,7 @@ pipeline {
         registry = "anujaharane/employee-service"
         registryCredential = 'dockerhub'
         dockerImage = ''
+        qualityGate=''
       }
       tools {
             maven 'Maven'
@@ -36,7 +37,7 @@ pipeline {
             withSonarQubeEnv('sonar-scanner') {
                 bat 'mvn clean package sonar:sonar'
                   timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                            def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                            qualityGate = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
                             if (qg.status != 'OK') {
                                 error "Pipeline aborted due to quality gate failure: ${qg.status}"
                             }
