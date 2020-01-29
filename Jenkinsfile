@@ -35,7 +35,7 @@ pipeline {
         stage('SonarQube analysis') {
               steps{
 
-            withSonarQubeEnv('sonar-scanner') {
+            withSonarQubeEnv('sonarqube') {
                 bat 'mvn clean package sonar:sonar'
                   timeout(time: 1, unit: 'HOURS') {
                    script {// Just in case something goes wrong, pipeline will be killed after a timeout
