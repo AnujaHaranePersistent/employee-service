@@ -1,6 +1,11 @@
 pipeline {
 
     agent any
+    environment {
+        registry = "anujaharane/employee-service"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+      }
       tools {
             maven 'Maven'
             jdk 'jdk8'
@@ -26,8 +31,25 @@ pipeline {
                   )
              }
         }
-
-
-   
+        stage('SonarQube analysis') {
+            withSonarQubeEnv('sonar-scanner') {
+                sh 'mvn clean package sonar:sonar'
+                  timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                            def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                            if (qg.status != 'OK') {
+                                error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                            }
+            } // SonarQube taskId is automatically attached to the pipeline context
+          }
+        }
+       stage('Building image') {
+             steps{
+               script {
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                  docker.withRegistry( '', registryCredential ) {
+                              dockerImage.push()
+               }
+             }
+           }
     }
     }
