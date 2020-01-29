@@ -47,8 +47,7 @@ pipeline {
                            // }
             } // SonarQube taskId is automatically attached to the pipeline context
              }
-          
-        }
+      
        stage('Building image') {
              steps{
                script {
