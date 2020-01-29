@@ -32,6 +32,7 @@ pipeline {
              }
         }
         stage('SonarQube analysis') {
+           steps {
             withSonarQubeEnv('sonar-scanner') {
                 bat 'mvn clean package sonar:sonar'
                   timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -40,6 +41,7 @@ pipeline {
                                 error "Pipeline aborted due to quality gate failure: ${qg.status}"
                             }
             } // SonarQube taskId is automatically attached to the pipeline context
+          }
           }
         }
        stage('Building image') {
@@ -50,6 +52,7 @@ pipeline {
                               dockerImage.push()
                }
              }
+           }
            }
     }
     }
