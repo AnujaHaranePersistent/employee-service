@@ -34,7 +34,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
               steps{
-            // script {
+            script {
             withSonarQubeEnv('sonarqube') {
                 bat 'mvn sonar:sonar'
                 }
@@ -46,7 +46,7 @@ pipeline {
                             if (qualityGate.status != 'OK') {
                                 error "Pipeline aborted due to quality gate failure: ${qualityGate.status}"
                             }
-                           // }
+                           }
             } // SonarQube taskId is automatically attached to the pipeline context
              }
       
