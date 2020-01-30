@@ -38,16 +38,14 @@ pipeline {
             withSonarQubeEnv('sonarqube') {
                 bat 'mvn sonar:sonar'
                 }
-
-                  // timeout(time: 1, unit: 'MINUTES') {
-                   // Just in case something goes wrong, pipeline will be killed after a timeout
-                   sleep(time:1,unit:"MINUTES")
-                            qualityGate = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                   // Wait for 30 sec to generate sonarqube status report
+                   sleep(time:30,unit:"SECONDS")
+                            qualityGate = waitForQualityGate() 
                             if (qualityGate.status != 'OK') {
                                 error "Pipeline aborted due to quality gate failure: ${qualityGate.status}"
                             }
                            }
-            } // SonarQube taskId is automatically attached to the pipeline context
+            }
              }
       
        stage('Building image') {
