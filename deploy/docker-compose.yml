@@ -1,0 +1,12 @@
+version: '3'
+services:
+  employee-data-service:
+    image: employee-service:latest
+    ports:
+      - 7000:7000
+    environment:
+      - DATABASE_HOST=employee-data.cz1wqlwvrpvc.ap-south-1.rds.amazonaws.com
+      - DATABASE_USERNAME=admin
+      - DATABASE_PASSWORD=NJnyDyNxN7QcLN2r5mMH
+      - DATABASE_NAME=employee_database
+      - DATABASE_PORT=3306
